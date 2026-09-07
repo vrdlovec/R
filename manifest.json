@@ -1,0 +1,338 @@
+[
+ {
+  "jmeno": "hero",
+  "sirka": 640,
+  "vyska": 427,
+  "avif": 9512,
+  "webp": 10212,
+  "jpg": 21581
+ },
+ {
+  "jmeno": "hero",
+  "sirka": 960,
+  "vyska": 640,
+  "avif": 18287,
+  "webp": 19720,
+  "jpg": 42757
+ },
+ {
+  "jmeno": "hero",
+  "sirka": 1280,
+  "vyska": 853,
+  "avif": 28989,
+  "webp": 31488,
+  "jpg": 69966
+ },
+ {
+  "jmeno": "hero",
+  "sirka": 1920,
+  "vyska": 1280,
+  "avif": 55577,
+  "webp": 58000,
+  "jpg": 143528
+ },
+ {
+  "jmeno": "golda",
+  "sirka": 600,
+  "vyska": 373,
+  "avif": 16838,
+  "webp": 21886,
+  "jpg": 30608
+ },
+ {
+  "jmeno": "golda",
+  "sirka": 900,
+  "vyska": 560,
+  "avif": 40435,
+  "webp": 55640,
+  "jpg": 72922
+ },
+ {
+  "jmeno": "golda",
+  "sirka": 1200,
+  "vyska": 746,
+  "avif": 77621,
+  "webp": 110350,
+  "jpg": 138404
+ },
+ {
+  "jmeno": "golda",
+  "sirka": 1800,
+  "vyska": 1120,
+  "avif": 184625,
+  "webp": 259172,
+  "jpg": 328430
+ },
+ {
+  "jmeno": "golda",
+  "sirka": 2400,
+  "vyska": 1493,
+  "avif": 332736,
+  "webp": 418320,
+  "jpg": 637956
+ },
+ {
+  "jmeno": "zpravodaj",
+  "sirka": 400,
+  "vyska": 266,
+  "avif": 5582,
+  "webp": 5422,
+  "jpg": 10068
+ },
+ {
+  "jmeno": "zpravodaj",
+  "sirka": 600,
+  "vyska": 400,
+  "avif": 11420,
+  "webp": 11338,
+  "jpg": 20390
+ },
+ {
+  "jmeno": "zpravodaj",
+  "sirka": 900,
+  "vyska": 600,
+  "avif": 23677,
+  "webp": 24066,
+  "jpg": 42784
+ },
+ {
+  "jmeno": "zpravodaj",
+  "sirka": 1300,
+  "vyska": 866,
+  "avif": 49676,
+  "webp": 47346,
+  "jpg": 84531
+ },
+ {
+  "jmeno": "fond",
+  "sirka": 400,
+  "vyska": 600,
+  "avif": 5703,
+  "webp": 5678,
+  "jpg": 12388
+ },
+ {
+  "jmeno": "fond",
+  "sirka": 600,
+  "vyska": 900,
+  "avif": 10269,
+  "webp": 11084,
+  "jpg": 23973
+ },
+ {
+  "jmeno": "fond",
+  "sirka": 900,
+  "vyska": 1350,
+  "avif": 21930,
+  "webp": 24712,
+  "jpg": 50676
+ },
+ {
+  "jmeno": "fond",
+  "sirka": 1300,
+  "vyska": 1950,
+  "avif": 48462,
+  "webp": 55900,
+  "jpg": 109279
+ },
+ {
+  "jmeno": "fond-fondu",
+  "sirka": 400,
+  "vyska": 266,
+  "avif": 5165,
+  "webp": 5666,
+  "jpg": 11320
+ },
+ {
+  "jmeno": "fond-fondu",
+  "sirka": 600,
+  "vyska": 400,
+  "avif": 9864,
+  "webp": 10616,
+  "jpg": 22217
+ },
+ {
+  "jmeno": "fond-fondu",
+  "sirka": 900,
+  "vyska": 600,
+  "avif": 18838,
+  "webp": 20034,
+  "jpg": 44498
+ },
+ {
+  "jmeno": "fond-fondu",
+  "sirka": 1300,
+  "vyska": 866,
+  "avif": 35057,
+  "webp": 36740,
+  "jpg": 84229
+ },
+ {
+  "jmeno": "les",
+  "sirka": 640,
+  "vyska": 427,
+  "avif": 27596,
+  "webp": 37518,
+  "jpg": 48782
+ },
+ {
+  "jmeno": "les",
+  "sirka": 960,
+  "vyska": 640,
+  "avif": 61065,
+  "webp": 82614,
+  "jpg": 106637
+ },
+ {
+  "jmeno": "les",
+  "sirka": 1280,
+  "vyska": 854,
+  "avif": 107856,
+  "webp": 145390,
+  "jpg": 188623
+ },
+ {
+  "jmeno": "les",
+  "sirka": 1920,
+  "vyska": 1280,
+  "avif": 231415,
+  "webp": 309196,
+  "jpg": 407969
+ },
+ {
+  "jmeno": "yoga-karlin",
+  "sirka": 400,
+  "vyska": 711,
+  "avif": 24275,
+  "webp": 39580,
+  "jpg": 53125
+ },
+ {
+  "jmeno": "yoga-karlin",
+  "sirka": 600,
+  "vyska": 1066,
+  "avif": 50839,
+  "webp": 81478,
+  "jpg": 109913
+ },
+ {
+  "jmeno": "yoga-karlin",
+  "sirka": 900,
+  "vyska": 1599,
+  "avif": 99946,
+  "webp": 154546,
+  "jpg": 218909
+ },
+ {
+  "jmeno": "yoga-karlin",
+  "sirka": 1300,
+  "vyska": 2310,
+  "avif": 172823,
+  "webp": 257552,
+  "jpg": 395184
+ },
+ {
+  "jmeno": "kurz-meditace",
+  "sirka": 400,
+  "vyska": 266,
+  "avif": 10234,
+  "webp": 15012,
+  "jpg": 20099
+ },
+ {
+  "jmeno": "kurz-meditace",
+  "sirka": 600,
+  "vyska": 400,
+  "avif": 20797,
+  "webp": 31236,
+  "jpg": 41517
+ },
+ {
+  "jmeno": "kurz-meditace",
+  "sirka": 900,
+  "vyska": 600,
+  "avif": 43465,
+  "webp": 63608,
+  "jpg": 87708
+ },
+ {
+  "jmeno": "kurz-meditace",
+  "sirka": 1300,
+  "vyska": 866,
+  "avif": 82602,
+  "webp": 120068,
+  "jpg": 170402
+ },
+ {
+  "jmeno": "nirvana",
+  "sirka": 400,
+  "vyska": 266,
+  "avif": 3905,
+  "webp": 3930,
+  "jpg": 8682
+ },
+ {
+  "jmeno": "nirvana",
+  "sirka": 600,
+  "vyska": 400,
+  "avif": 6877,
+  "webp": 6688,
+  "jpg": 16366
+ },
+ {
+  "jmeno": "nirvana",
+  "sirka": 900,
+  "vyska": 600,
+  "avif": 14655,
+  "webp": 13738,
+  "jpg": 34055
+ },
+ {
+  "jmeno": "nirvana",
+  "sirka": 1300,
+  "vyska": 866,
+  "avif": 36128,
+  "webp": 34388,
+  "jpg": 75421
+ },
+ {
+  "jmeno": "nirvana",
+  "sirka": 1800,
+  "vyska": 1199,
+  "avif": 84519,
+  "webp": 94218,
+  "jpg": 169261
+ },
+ {
+  "jmeno": "kurz-online",
+  "sirka": 400,
+  "vyska": 400,
+  "avif": 10813,
+  "webp": 15470,
+  "jpg": 25375
+ },
+ {
+  "jmeno": "kurz-online",
+  "sirka": 600,
+  "vyska": 600,
+  "avif": 20227,
+  "webp": 28312,
+  "jpg": 48408
+ },
+ {
+  "jmeno": "kurz-online",
+  "sirka": 900,
+  "vyska": 900,
+  "avif": 41068,
+  "webp": 56532,
+  "jpg": 98426
+ },
+ {
+  "jmeno": "kurz-online",
+  "sirka": 1300,
+  "vyska": 1300,
+  "avif": 77792,
+  "webp": 101748,
+  "jpg": 186470
+ }
+]

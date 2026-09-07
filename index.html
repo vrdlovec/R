@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vrdlovec</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'%3E%3Cpath d='M0 0H1000V1000H0Z' fill='%239355FF'/%3E%3Cpath d='M33.3 682.5V0L824.4 0Q863.6 30.5 885.7 74.6Q913.3 129.8 913.3 193.6Q913.3 267 880.9 323.8Q848.5 380.7 785.8 414.7L930.3 682.5H633.8L523.2 454H295.8V682.5ZM295.8 272.3H574.3Q604 272.3 624.2 253.7Q644.4 235.1 644.4 202.1Q644.4 179.8 634.8 164.4Q625.3 149 609.9 141Q594.5 133 574.3 133H295.8Z' fill='%230B0B0C'/%3E%3C/svg%3E">
+<style>
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url(font/archivo-k3kQo8UDI-1M0wlSfdboLnnA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url(font/archivo-k3kQo8UDI-1M0wlSfdfoLnnA.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url(font/archivo-k3kQo8UDI-1M0wlSfdnoLg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<link rel="preload" href="font/archivo-k3kQo8UDI-1M0wlSfdnoLg.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+:root {
+  --ink:#0B0B0C; --noc:#190F2E; --stin:#2E1A54; --hloubka:#622CB5; --viola:#9355FF;
+  --svetlo:#AA7EFF; --mlha:#D9D2F6; --ivory:#FEFBF3; --azur:#40C0E7; --sede:#8B8794;
+  --sans:'Archivo','Helvetica Neue',Arial,sans-serif; --gut:clamp(20px,5vw,64px);
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--ink); color:var(--ivory); font-family:var(--sans);
+  font-variation-settings:'wdth' 100,'wght' 400; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased; }
+img { display:block; max-width:100%; }
+picture { display:contents; }
+a { color:var(--azur); text-decoration:none; }
+a:hover { color:var(--ivory); }
+a:focus-visible { outline:2px solid var(--azur); outline-offset:3px; }
+.wrap { max-width:1440px; margin:0 auto; padding:0 var(--gut); }
+.blk { font-variation-settings:'wdth' 125,'wght' 900; text-transform:uppercase;
+  line-height:.86; letter-spacing:-.035em; }
+.lbl { font-variation-settings:'wdth' 100,'wght' 600; text-transform:uppercase;
+  letter-spacing:.2em; font-size:11px; }
+
+header { display:flex; align-items:center; justify-content:space-between; gap:24px;
+  padding:22px var(--gut); position:relative; z-index:3; }
+.stamp { color:var(--ivory); font-size:clamp(17px,2.1vw,23px); }
+.stamp:hover { color:var(--viola); }
+nav { display:flex; gap:26px; }
+nav a { color:var(--ivory); } nav a:hover { color:var(--viola); }
+
+.hero { position:relative; }
+.hero-m { position:absolute; inset:0; overflow:hidden; }
+.hero-m img { width:100%; height:100%; object-fit:cover; object-position:22% 30%; opacity:.62; }
+.hero-m::after { content:''; position:absolute; inset:0;
+  background:linear-gradient(100deg,var(--ink) 6%,rgba(11,11,12,.72) 42%,rgba(11,11,12,.15) 78%),
+             linear-gradient(to top,var(--ink) 2%,transparent 40%); }
+.hero-in { position:relative; z-index:2; padding:clamp(56px,11vw,140px) 0 clamp(40px,7vw,84px); }
+.eyebrow { color:var(--viola); margin-bottom:clamp(20px,3vw,34px); }
+h1 { margin:0; font-size:clamp(52px,13.5vw,188px); }
+h1 .l2 { display:block; } h1 em { font-style:normal; color:var(--viola); }
+.claim { margin:clamp(26px,4vw,44px) 0 0; font-size:clamp(18px,2.2vw,26px);
+  line-height:1.4; color:var(--mlha); }
+
+.cislo b { display:block; font-variation-settings:'wdth' 125,'wght' 900;
+  font-size:clamp(28px,4.8vw,58px); line-height:.9; letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums; }
+.cislo.zlato b { color:var(--viola); }
+.cislo span { display:block; margin-top:10px; color:var(--sede); font-size:12px; line-height:1.4;
+  font-variation-settings:'wdth' 100,'wght' 500; }
+.cislo span em { font-style:normal; color:var(--svetlo); }
+
+.sek { display:flex; align-items:baseline; gap:18px;
+  padding:clamp(52px,8vw,110px) 0 clamp(20px,3vw,34px); }
+.sek .n { color:var(--viola); font-variation-settings:'wdth' 125,'wght' 900;
+  font-size:clamp(13px,1.5vw,17px); letter-spacing:0; }
+.sek h2 { margin:0; font-size:clamp(28px,4.6vw,64px); }
+.sek .rule { flex:1; height:1px; background:var(--stin); }
+
+.mriz { display:grid; grid-template-columns:repeat(6,1fr); gap:clamp(12px,1.6vw,22px); }
+.t { position:relative; display:flex; flex-direction:column; justify-content:flex-end;
+  min-height:clamp(290px,26vw,380px); padding:clamp(20px,2.4vw,32px); overflow:hidden;
+  background:var(--noc); isolation:isolate; }
+.t.tall { min-height:clamp(340px,34vw,500px); }
+.tm { position:absolute; inset:0; z-index:0; }
+.tm img { width:100%; height:100%; object-fit:cover; }
+.tm::after { content:''; position:absolute; inset:0;
+  background:linear-gradient(to top,rgba(11,11,12,.94) 8%,rgba(11,11,12,.38) 58%,rgba(11,11,12,.12) 100%); }
+.flood { position:absolute; inset:0; z-index:1; background:var(--viola); mix-blend-mode:color;
+  opacity:0; transition:opacity .45s ease; pointer-events:none; }
+.t:hover .flood, .t:focus-within .flood { opacity:.92; }
+.t > .th, .t > h3, .t > p { position:relative; z-index:1; }
+.cover { position:absolute; inset:0; z-index:2; }
+.th { display:flex; align-items:center; gap:10px; margin-bottom:auto;
+  padding-right:clamp(70px,9vw,100px); }
+.kick { color:var(--viola); } .t:hover .kick { color:var(--ivory); }
+.t h3 { margin:0 0 10px; font-size:clamp(26px,3.2vw,52px); }
+/* 3,2 vw ne 3,4: pri 3,4 zbyvalo nadpisu ZAJISTOVACI na sirce 1081 px
+   jen 24 px rezervy, coz nepokryje rozdil metrik pri nacitani pisma. */
+.t p { margin:0; color:var(--mlha); font-size:14.5px; line-height:1.5; max-width:34ch; }
+.soc { position:absolute; z-index:3; display:flex; gap:clamp(11px,1.2vw,15px);
+  right:clamp(20px,2.4vw,32px); top:clamp(20px,2.4vw,32px); }
+.soc a { color:var(--mlha); opacity:.5; line-height:0;
+  transition:opacity .2s ease, color .2s ease; }
+/* Fialova je prvni vyskyt odkazu, Mlha jeho zopakovani. Fond fondu zopakuje
+   capconcz ze Zajistovaciho fondu, Kurz online zopakuje vrdlovec z Kurzu
+   meditace - fialove je tedy sest dlazdic z osmi. Pouziva se Svetlo, ne Viola:
+   Viola na Noci ma kontrast 2,42, tedy pod minimem 3,0 pro graficke prvky,
+   Svetlo ma 4,19 a je to podle palety odstin fialove pro tmavy podklad. */
+.soc.unik a { color:var(--svetlo); opacity:.85; }
+/* Pri najeti se fialove ikony vraci do sede, ve ktere byly puvodne - fialovou
+   uz nese cela dlazdice a druha fialova by se s ni bila. */
+.t:hover .soc.unik a, .t:focus-within .soc.unik a { color:var(--mlha); opacity:.5; }
+.soc a:hover, .t:hover .soc.unik a:hover { opacity:1; color:var(--ivory); }
+.soc svg { width:17px; height:17px; display:block; fill:currentColor; }
+
+.break { position:relative; margin-top:clamp(52px,8vw,110px); min-height:clamp(320px,44vw,620px);
+  overflow:hidden; }
+/* Pomaly nadjezd na statickem snimku. Zacykleni je bezesve, protoze klice
+   0 % a 100 % jsou totozne a mezi nimi vede drah po uzavrene krivce - obraz
+   se nevraci pozpatku, jen dojde tam, odkud vyjel. Zadny prechod, zadne
+   prolnuti, zadny sek. Zvetseni 1.12 dava 6 % prekryvu na kazdou stranu,
+   posun 3,4 % se scale vyjde na 3,8 % - hrana se tedy nikdy neodkryje.
+   Perioda 36 s je asi 1,6 px/s. */
+.break img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.7;
+  animation:les 36s ease-in-out infinite; will-change:transform; }
+@keyframes les {
+  0%   { transform:scale(1.14) translate(0,0); }
+  25%  { transform:scale(1.14) translate(-3.2%,-1.5%); }
+  50%  { transform:scale(1.14) translate(-1.6%,-3.4%); }
+  75%  { transform:scale(1.14) translate(2.2%,-1.8%); }
+  100% { transform:scale(1.14) translate(0,0); }
+}
+.break::after { content:''; position:absolute; inset:0;
+  background:linear-gradient(to bottom,var(--ink) 0%,transparent 26%,transparent 74%,var(--ink) 100%); }
+
+footer { margin-top:clamp(52px,8vw,110px);
+  padding:clamp(34px,5vw,60px) 0 clamp(44px,7vw,84px); }
+.fbig { font-variation-settings:'wdth' 125,'wght' 900; text-transform:uppercase;
+  font-size:clamp(26px,3.6vw,52px); line-height:.9; letter-spacing:-.03em; margin:0; }
+.fbig a { color:var(--viola); }
+.fbig a:hover { color:var(--ivory); }
+.fbot { display:flex; flex-wrap:wrap; gap:14px 30px; align-items:baseline;
+  margin-top:clamp(30px,4vw,52px);
+  color:var(--sede); font-size:12.5px; }
+.fbot .stav { margin-left:auto; color:var(--viola); }
+
+
+/* === ROZVRZENI ==========================================================
+   Nad 1080 px: dvanact sloupcu, kazda dlazdice ma vlastni sloupcovy rozsah
+   a vlastni vysku. Svisle posazeni dela margin-top, takze dve dlazdice
+   sdileji vodorovny pas, ale nikdy se neprekryvaji plochou - jejich
+   sloupcove rozsahy jsou vzdy disjunktni. Cisla stoji samostatne
+   v prazdnych pasech, nikdy jako protivaha dlazdice.
+   1080-761 px: dva sloupce, veskere umisteni se rusi.
+   Do 760 px: jeden sloupec, vysky od sirky displeje, pevne velikosti pisma.
+   ======================================================================== */
+
+/* Popisek sekce sedi v pravem sloupci, na svislici devateho sloupce - stejne
+   jako u STRV jejich SELECTED PROJECTS. Nestoji nad sekci jako zmenseny
+   titulek, ale vedle ni jako okrajova poznamka. */
+.sek { display:grid; grid-template-columns:repeat(12,1fr);
+  column-gap:clamp(14px,2vw,34px);
+  padding:clamp(64px,11vw,170px) 0 clamp(18px,2.6vw,34px); }
+.sek h2, .sek .rule { display:none; }
+.sek .lbl { grid-column:9 / 13; }
+
+.mriz { grid-template-columns:repeat(12,1fr); align-items:start;
+  column-gap:clamp(14px,2vw,34px); row-gap:clamp(56px,9vw,150px); }
+.mriz > * { min-width:0; }
+.mriz .cislo { padding:0; }
+.mriz .cislo b { font-size:clamp(38px,7vw,116px); }
+.mriz .cislo span { margin-top:16px; max-width:22ch; font-size:13px; }
+
+/* Vysky dlazdic vychazi z POMERU ZDROJOVE FOTKY, aby se orezavalo co nejmin:
+   Golda 1,61 | Zpravodaj, oba fondy, Kurz meditace, Nirvana 1,50
+   Zajistovaci fond 0,67 | Yoga Karlin 0,56 | Kurz online 1,00
+   Vyjimka je Zajistovaci fond: presny pomer 0,67 by pri peti sloupcich delal
+   dlazdici 790 px vysokou, drzi se proto na 0,80 a orizne se shora a zdola.
+
+   Dvojice ve stejnem pasu se NIKDE nesrovnavaji - ani nahore, ani dole.
+   U STRV je v zakrytu spodek KARTY (karta je obrazek plus popisek pod nim
+   a v radku se roztahuje), ale spodky fotek konci pokazde jinde:
+   3618/3985, 4503/4872, 6439/6279. Tady je dlazdice zaroven fotka, takze
+   srovnat spodky by znamenalo srovnat prave to, co oni nesrovnavaji.
+   Kazda dvojice ma jiny VZTAH, ne jen jine cislo.
+   Ve dvojici je kazda druha dlazdice, ne tri ctvrtiny.
+
+   Poradi v sekci 01: Golda pres skoro celou sirku, pak Zpravodaj,
+   az potom oba fondy - ty jsou ta dvojice.  */
+
+/* 01 Penize - poradi v DOM: Golda, cislo +124 %, Zpravodaj,
+   Zajistovaci fond, cislo 1250+, fond fondu */
+#vnejsi + .mriz > :nth-child(1) { grid-row:1; grid-column:1 / 12;
+  min-height:clamp(400px,51.7vw,745px); }
+#vnejsi + .mriz > :nth-child(2) { grid-row:2; grid-column:4 / 10; }
+#vnejsi + .mriz > :nth-child(3) { grid-row:3; grid-column:7 / 13;
+  min-height:clamp(300px,29.7vw,427px); }
+#vnejsi + .mriz > :nth-child(5) { grid-row:4; grid-column:1 / 6; }
+#vnejsi + .mriz > :nth-child(4) { grid-row:5; grid-column:2 / 7;
+  min-height:clamp(340px,45.8vw,660px); }
+#vnejsi + .mriz > :nth-child(6) { grid-row:5; grid-column:8 / 13;
+  min-height:clamp(280px,24.5vw,353px); margin-top:clamp(130px,29.2vw,420px); }
+
+/* 02 Mysl - poradi v DOM: Yoga Karlin, cislo 3000+, Kurz meditace,
+   Nirvana, cislo 15+, Kurz online */
+#vnitrni + .mriz > :nth-child(1) { grid-row:1; grid-column:1 / 5;
+  min-height:clamp(400px,51.8vw,746px); }
+#vnitrni + .mriz > :nth-child(3) { grid-row:1; grid-column:6 / 12;
+  min-height:clamp(300px,29.7vw,427px); margin-top:clamp(160px,38.9vw,560px); }
+#vnitrni + .mriz > :nth-child(2) { grid-row:2; grid-column:1 / 7; }
+#vnitrni + .mriz > :nth-child(4) { grid-row:3; grid-column:3 / 11;
+  min-height:clamp(380px,40.1vw,577px); }
+#vnitrni + .mriz > :nth-child(5) { grid-row:4; grid-column:7 / 13; }
+#vnitrni + .mriz > :nth-child(6) { grid-row:5; grid-column:2 / 7;
+  min-height:clamp(340px,36.8vw,530px); }
+
+/* Cislo 3000+ ma stat na jednom radku, ne na dvou */
+#vnitrni + .mriz > :nth-child(2) span { max-width:none; white-space:nowrap; }
+
+/* ---- 1080 px: dva sloupce, umisteni se rusi ---- */
+@media (max-width:1080px) {
+  nav { display:none; }
+  .mriz { grid-template-columns:repeat(2,1fr); row-gap:clamp(24px,5vw,48px); }
+  .sek .lbl { grid-column:1 / -1; }
+  /* :nth-child(n) drzi stejnou specificitu jako :nth-child(1) vyse,
+     takze o vysledku rozhoduje poradi ve zdroji - jinak by reset neprebil */
+  #vnejsi + .mriz > :nth-child(n), #vnitrni + .mriz > :nth-child(n) {
+    grid-row:auto; grid-column:auto; margin-top:0; align-self:auto;
+    min-height:clamp(300px,30vw,400px); }
+  .mriz .cislo { min-height:0 !important; padding:6px 0; }
+  /* Ve sloupci jde cislo ZA svou dlazdici. V DOM stoji pred ni, protoze na
+     desktopu je umistene vyslovne a poradi v DOM tam nerozhoduje. */
+  #vnejsi  + .mriz > :nth-child(4) { order:5; }
+  #vnejsi  + .mriz > :nth-child(5) { order:4; }
+  #vnitrni + .mriz > :nth-child(2) { order:3; }
+  #vnitrni + .mriz > :nth-child(3) { order:2; }
+  #vnejsi  + .mriz > :nth-child(1), #vnitrni + .mriz > :nth-child(1) { order:1; }
+  #vnejsi  + .mriz > :nth-child(2) { order:2; }
+  #vnejsi  + .mriz > :nth-child(3) { order:3; }
+  #vnejsi  + .mriz > :nth-child(6) { order:6; }
+  #vnitrni + .mriz > :nth-child(4) { order:4; }
+  #vnitrni + .mriz > :nth-child(5) { order:5; }
+  #vnitrni + .mriz > :nth-child(6) { order:6; }
+}
+
+/* ---- 760 px: jeden sloupec, vysky od sirky displeje ---- */
+@media (max-width:760px) {
+  .mriz { grid-template-columns:1fr; column-gap:0; row-gap:16px; }
+  /* Vysky ve sloupci podle pomeru ZDROJOVE FOTKY. aspect-ratio je presnejsi
+     nez vw: sirka dlazdice je ve sloupci dana obsahovou sirkou, ne viewportem,
+     takze vw by se rozjelo s velikosti okraju. Nejdriv se zrusi min-height
+     ze zlomu 1080, jinak by 300px podlaha pomer prebila.
+     Golda a Yoga Karlin zamerne zustavaji v puvodnim orezu. */
+  #vnejsi + .mriz > .t, #vnitrni + .mriz > .t { min-height:0 !important; }
+  #vnejsi  + .mriz > :nth-child(1) { min-height:82vw !important; }  /* Golda, orez zustava */
+  #vnitrni + .mriz > :nth-child(1) { min-height:66vw !important; }  /* Yoga Karlin, orez zustava */
+  #vnejsi  + .mriz > :nth-child(3) { aspect-ratio:3/2; }  /* Zpravodaj 1,50 */
+  #vnejsi  + .mriz > :nth-child(4) { aspect-ratio:4/5; }  /* Zajistovaci fond, 0,80 misto 0,67 */
+  #vnejsi  + .mriz > :nth-child(6) { aspect-ratio:3/2; }  /* fond fondu 1,50 */
+  #vnitrni + .mriz > :nth-child(3) { aspect-ratio:3/2; }  /* Kurz meditace 1,50 */
+  #vnitrni + .mriz > :nth-child(4) { aspect-ratio:3/2; }  /* Nirvana 1,50 */
+  #vnitrni + .mriz > :nth-child(6) { aspect-ratio:1/1; }  /* Kurz online 1,00 */
+  .mriz .cislo { padding:14px 0; }
+  .mriz .cislo b { font-size:52px; }
+  .mriz .cislo span { max-width:none; }
+  /* strop 32 px, podlaha 25 px: na 320px displeji by pevnych 32 px
+     nechalo nadpis ZAJISTOVACI pretect z dlazdice */
+  .t h3 { font-size:clamp(22px,7.4vw,32px); }
+  .t p { font-size:15px; max-width:none; }
+  h1 { font-size:15vw; }
+  .claim { font-size:17px; }
+  .soc { top:18px; right:18px; }
+  .th { padding-right:86px; }
+}
+@media (prefers-reduced-motion:reduce) { * { transition:none !important; animation:none !important; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M18.9 2H22l-7.1 8.1L23.2 22h-6.5l-5.1-6.7L5.8 22H2.6l7.6-8.7L2 2h6.7l4.6 6.1L18.9 2Zm-1.1 18h1.8L7.3 3.8H5.4L17.8 20Z"/></symbol>
+<symbol id="i-ig" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.2.06 1.9.25 2.4.44.6.23 1 .5 1.5.95.45.45.72.9.95 1.5.19.5.38 1.2.44 2.4.07 1.2.07 1.6.07 4.8s0 3.6-.07 4.8c-.06 1.2-.25 1.9-.44 2.4-.23.6-.5 1-.95 1.5-.45.45-.9.72-1.5.95-.5.19-1.2.38-2.4.44-1.2.07-1.6.07-4.8.07s-3.6 0-4.8-.07c-1.2-.06-1.9-.25-2.4-.44a4 4 0 0 1-1.5-.95 4 4 0 0 1-.95-1.5c-.19-.5-.38-1.2-.44-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.8c.06-1.2.25-1.9.44-2.4.23-.6.5-1 .95-1.5.45-.45.9-.72 1.5-.95.5-.19 1.2-.38 2.4-.44C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.14 0-3.5.01-4.74.07-1.14.05-1.76.24-2.17.4-.55.21-.94.47-1.35.88-.41.41-.67.8-.88 1.35-.16.41-.35 1.03-.4 2.17-.06 1.24-.07 1.6-.07 4.74s.01 3.5.07 4.74c.05 1.14.24 1.76.4 2.17.21.55.47.94.88 1.35.41.41.8.67 1.35.88.41.16 1.03.35 2.17.4 1.24.06 1.6.07 4.74.07s3.5-.01 4.74-.07c1.14-.05 1.76-.24 2.17-.4.55-.21.94-.47 1.35-.88.41-.41.67-.8.88-1.35.16-.41.35-1.03.4-2.17.06-1.24.07-1.6.07-4.74s-.01-3.5-.07-4.74c-.05-1.14-.24-1.76-.4-2.17a3.6 3.6 0 0 0-.88-1.35 3.6 3.6 0 0 0-1.35-.88c-.41-.16-1.03-.35-2.17-.4C15.5 4.01 15.14 4 12 4Zm0 3.05a4.95 4.95 0 1 1 0 9.9 4.95 4.95 0 0 1 0-9.9Zm0 1.8a3.15 3.15 0 1 0 0 6.3 3.15 3.15 0 0 0 0-6.3Zm5.15-3.2a1.18 1.18 0 1 1 0 2.36 1.18 1.18 0 0 1 0-2.36Z"/></symbol>
+<symbol id="i-fb" viewBox="0 0 24 24"><path d="M13.5 21v-8.2h2.75l.41-3.2H13.5V7.56c0-.92.26-1.55 1.58-1.55h1.69V3.14A22.6 22.6 0 0 0 14.3 3c-2.44 0-4.1 1.49-4.1 4.22V9.6H7.44v3.2H10.2V21h3.3Z"/></symbol>
+<symbol id="i-li" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 21V9.5h4V21H3Zm7 0V9.5h3.8v1.6h.05c.53-1 1.83-2.05 3.75-2.05 4 0 4.75 2.6 4.75 6V21h-4v-5.3c0-1.3-.02-3-1.83-3-1.83 0-2.12 1.4-2.12 2.9V21h-4Z"/></symbol>
+<symbol id="i-th" viewBox="0 0 24 24"><path d="M12.19 24h-.01c-3.58-.02-6.33-1.2-8.18-3.51C2.35 18.44 1.5 15.59 1.47 12.01v-.02c.03-3.58.88-6.43 2.53-8.48C5.85 1.2 8.6.02 12.18 0h.01c2.75.02 5.05.73 6.83 2.1 1.68 1.29 2.86 3.13 3.51 5.47l-2.04.57c-1.1-3.96-3.9-5.99-8.3-6.02-2.91.02-5.11.94-6.54 2.72C4.31 6.5 3.62 8.91 3.59 12c.03 3.09.72 5.5 2.06 7.16 1.43 1.79 3.63 2.7 6.54 2.72 2.62-.02 4.36-.63 5.8-2.05 1.65-1.61 1.62-3.59 1.09-4.8-.31-.71-.87-1.3-1.63-1.75-.2 1.36-.63 2.45-1.29 3.28-.89 1.1-2.14 1.7-3.73 1.79-1.2.06-2.36-.22-3.26-.8-1.06-.69-1.69-1.74-1.75-2.97-.07-1.19.4-2.28 1.33-3.08.88-.76 2.12-1.21 3.58-1.29 1.08-.06 2.09-.01 3.02.14-.13-.74-.38-1.33-.75-1.76-.51-.59-1.31-.88-2.36-.89h-.03c-.84 0-1.99.23-2.72 1.32L7.73 7.85c.98-1.46 2.57-2.26 4.48-2.26h.04c3.19.02 5.1 1.98 5.29 5.39l.32.14c1.49.7 2.58 1.76 3.15 3.07.8 1.82.87 4.79-1.55 7.16C17.61 23.16 15.37 23.98 12.19 24Zm1-11.69c-.24 0-.49.01-.74.02-1.84.1-2.98.95-2.92 2.14.07 1.26 1.45 1.84 2.79 1.77 1.22-.07 2.81-.55 3.08-3.71a10.5 10.5 0 0 0-2.21-.22Z"/></symbol>
+<symbol id="i-bs" viewBox="0 0 24 24"><path d="M12 10.8C10.91 8.69 7.95 4.75 5.2 2.81 2.57.94 1.56 1.27.9 1.57.14 1.91 0 3.08 0 3.77c0 .69.38 5.65.62 6.48.82 2.74 3.71 3.66 6.38 3.36l.42-.06c-.14.02-.28.04-.42.06-3.91.58-7.39 2-2.83 7.08 5.01 5.19 6.87-1.11 7.83-4.31.95 3.2 2.05 9.27 7.73 4.31 4.27-4.31 1.17-6.5-2.74-7.08l-.42-.06.42.06c2.67.3 5.56-.62 6.38-3.36.24-.83.62-5.79.62-6.48 0-.69-.14-1.86-.9-2.2-.66-.3-1.67-.63-4.3 1.24C16.05 4.75 13.09 8.69 12 10.8Z"/></symbol>
+</defs></svg>
+<header>
+  <a class="stamp blk" href="#">Vrdlovec</a>
+  <nav class="lbl">
+    <a href="#vnejsi">Vnější</a><a href="#vnitrni">Vnitřní</a><a href="#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-m"><picture><source type="image/avif" sizes="100vw" srcset="img/hero-640.avif 640w, img/hero-960.avif 960w, img/hero-1280.avif 1280w, img/hero-1920.avif 1920w"><source type="image/webp" sizes="100vw" srcset="img/hero-640.webp 640w, img/hero-960.webp 960w, img/hero-1280.webp 1280w, img/hero-1920.webp 1920w"><img src="img/hero-1920.jpg" sizes="100vw" srcset="img/hero-640.jpg 640w, img/hero-960.jpg 960w, img/hero-1280.jpg 1280w, img/hero-1920.jpg 1920w" width="1920" height="1280" alt="Richard Vrdlovec" loading="eager" decoding="async" fetchpriority="high"></picture></div>
+  <div class="wrap hero-in">
+    <h1 class="blk">Peníze<span class="l2">a <em>mysl</em></span></h1>
+    <p class="claim">Dvě svobody. Vnější a vnitřní.</p>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <div class="sek" id="vnejsi">
+    <h2 class="blk">Vnější</h2><div class="rule"></div>
+    <span class="lbl" style="color:var(--sede)">Peníze</span>
+  </div>
+  <div class="mriz"><article class="t s4 tall">
+  <div class="tm"><picture><source type="image/avif" sizes="(min-width:1568px) 1200px, (min-width:1081px) 84vw, (min-width:761px) 46vw, 92vw" srcset="img/golda-600.avif 600w, img/golda-900.avif 900w, img/golda-1200.avif 1200w, img/golda-1800.avif 1800w, img/golda-2400.avif 2400w"><source type="image/webp" sizes="(min-width:1568px) 1200px, (min-width:1081px) 84vw, (min-width:761px) 46vw, 92vw" srcset="img/golda-600.webp 600w, img/golda-900.webp 900w, img/golda-1200.webp 1200w, img/golda-1800.webp 1800w, img/golda-2400.webp 2400w"><img src="img/golda-2400.jpg" sizes="(min-width:1568px) 1200px, (min-width:1081px) 84vw, (min-width:761px) 46vw, 92vw" srcset="img/golda-600.jpg 600w, img/golda-900.jpg 900w, img/golda-1200.jpg 1200w, img/golda-1800.jpg 1800w, img/golda-2400.jpg 2400w" width="2400" height="1493" alt="" loading="lazy" decoding="async"></picture></div><div class="flood"></div>
+  <div class="th"><span class="lbl kick">Zlato</span></div>
+  <h3 class="blk">Golda</h3>
+  <p>Lepší spořicí účet</p>
+  <a class="cover" href="https://golda.io" aria-label="Golda" target="_blank" rel="noopener"></a>
+  <div class="soc unik"><a href="https://x.com/golda_io" aria-label="X" target="_blank" rel="noopener"><svg><use href="#i-x"/></svg></a><a href="https://instagram.com/golda.io" aria-label="Instagram" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg></a><a href="https://facebook.com/golda.cz" aria-label="Facebook" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg></a></div>
+</article><div class="cislo zlato"><b id="zhodnoceni">+124 %</b><span>výnos od založení Goldy (<em id="pa">+24 % p.&nbsp;a.</em>)</span></div><article class="t s2 tall">
+  <div class="tm"><picture><source type="image/avif" sizes="(min-width:1568px) 645px, (min-width:1081px) 45vw, (min-width:761px) 46vw, 92vw" srcset="img/zpravodaj-400.avif 400w, img/zpravodaj-600.avif 600w, img/zpravodaj-900.avif 900w, img/zpravodaj-1300.avif 1300w"><source type="image/webp" sizes="(min-width:1568px) 645px, (min-width:1081px) 45vw, (min-width:761px) 46vw, 92vw" srcset="img/zpravodaj-400.webp 400w, img/zpravodaj-600.webp 600w, img/zpravodaj-900.webp 900w, img/zpravodaj-1300.webp 1300w"><img src="img/zpravodaj-1300.jpg" sizes="(min-width:1568px) 645px, (min-width:1081px) 45vw, (min-width:761px) 46vw, 92vw" srcset="img/zpravodaj-400.jpg 400w, img/zpravodaj-600.jpg 600w, img/zpravodaj-900.jpg 900w, img/zpravodaj-1300.jpg 1300w" width="1300" height="866" alt="" loading="lazy" decoding="async"></picture></div><div class="flood"></div>
+  <div class="th"><span class="lbl kick">Zlato</span></div>
+  <h3 class="blk">Zpravodaj</h3>
+  <p>Co dělá zlato a proč?</p>
+  <a class="cover" href="https://goldaio.substack.com/" aria-label="Zpravodaj" target="_blank" rel="noopener"></a>
+  <div class="soc unik"><a href="https://www.threads.net/@golda.io" aria-label="Threads" target="_blank" rel="noopener"><svg><use href="#i-th"/></svg></a><a href="https://bsky.app/profile/goldaio.bsky.social" aria-label="Bluesky" target="_blank" rel="noopener"><svg><use href="#i-bs"/></svg></a><a href="https://www.linkedin.com/company/golda" aria-label="LinkedIn" target="_blank" rel="noopener"><svg><use href="#i-li"/></svg></a></div>
+</article><article class="t s3">
+  <div class="tm"><picture><source type="image/avif" sizes="(min-width:1568px) 535px, (min-width:1081px) 37vw, (min-width:761px) 46vw, 92vw" srcset="img/fond-400.avif 400w, img/fond-600.avif 600w, img/fond-900.avif 900w, img/fond-1300.avif 1300w"><source type="image/webp" sizes="(min-width:1568px) 535px, (min-width:1081px) 37vw, (min-width:761px) 46vw, 92vw" srcset="img/fond-400.webp 400w, img/fond-600.webp 600w, img/fond-900.webp 900w, img/fond-1300.webp 1300w"><img src="img/fond-1300.jpg" sizes="(min-width:1568px) 535px, (min-width:1081px) 37vw, (min-width:761px) 46vw, 92vw" srcset="img/fond-400.jpg 400w, img/fond-600.jpg 600w, img/fond-900.jpg 900w, img/fond-1300.jpg 1300w" width="1300" height="1950" alt="" loading="lazy" decoding="async"></picture></div><div class="flood"></div>
+  <div class="th"><span class="lbl kick">Fond</span></div>
+  <h3 class="blk">Zajišťovací<br>fond</h3>
+  <p>Nemůžete předvídat,<br>můžete se připravit.</p>
+  <a class="cover" href="https://zajistovacifond.cz" aria-label="Zajišťovací fond" target="_blank" rel="noopener"></a>
+  <div class="soc unik"><a href="https://x.com/capconcz" aria-label="X" target="_blank" rel="noopener"><svg><use href="#i-x"/></svg></a><a href="https://facebook.com/capcon.cz" aria-label="Facebook" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg></a></div>
+</article><div class="cislo"><b>1250+</b><span>odběratelů zpravodaje</span></div><article class="t s3">
+  <div class="tm"><picture><source type="image/avif" sizes="(min-width:1568px) 535px, (min-width:1081px) 37vw, (min-width:761px) 46vw, 92vw" srcset="img/fond-fondu-400.avif 400w, img/fond-fondu-600.avif 600w, img/fond-fondu-900.avif 900w, img/fond-fondu-1300.avif 1300w"><source type="image/webp" sizes="(min-width:1568px) 535px, (min-width:1081px) 37vw, (min-width:761px) 46vw, 92vw" srcset="img/fond-fondu-400.webp 400w, img/fond-fondu-600.webp 600w, img/fond-fondu-900.webp 900w, img/fond-fondu-1300.webp 1300w"><img src="img/fond-fondu-1300.jpg" sizes="(min-width:1568px) 535px, (min-width:1081px) 37vw, (min-width:761px) 46vw, 92vw" srcset="img/fond-fondu-400.jpg 400w, img/fond-fondu-600.jpg 600w, img/fond-fondu-900.jpg 900w, img/fond-fondu-1300.jpg 1300w" width="1300" height="866" alt="" loading="lazy" decoding="async"></picture></div><div class="flood"></div>
+  <div class="th"><span class="lbl kick">Fond fondů</span></div>
+  <h3 class="blk">Zajišťovací<br>fond fondů</h3>
+  <p>Nevybírá pozice, vybírá správce.</p>
+  <a class="cover" href="https://zajistovaci.cz" aria-label="Zajišťovací fond fondů" target="_blank" rel="noopener"></a>
+  <div class="soc"><a href="https://x.com/capconcz" aria-label="X" target="_blank" rel="noopener"><svg><use href="#i-x"/></svg></a><a href="https://facebook.com/capcon.cz" aria-label="Facebook" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg></a></div>
+</article></div>
+</div>
+
+<section class="break">
+  <picture><source type="image/avif" sizes="100vw" srcset="img/les-640.avif 640w, img/les-960.avif 960w, img/les-1280.avif 1280w, img/les-1920.avif 1920w"><source type="image/webp" sizes="100vw" srcset="img/les-640.webp 640w, img/les-960.webp 960w, img/les-1280.webp 1280w, img/les-1920.webp 1920w"><img src="img/les-1920.jpg" sizes="100vw" srcset="img/les-640.jpg 640w, img/les-960.jpg 960w, img/les-1280.jpg 1280w, img/les-1920.jpg 1920w" width="1920" height="1280" alt="" loading="lazy" decoding="async"></picture>
+</section>
+
+<div class="wrap">
+  <div class="sek" id="vnitrni">
+    <h2 class="blk">Vnitřní</h2><div class="rule"></div>
+    <span class="lbl" style="color:var(--sede)">Mysl</span>
+  </div>
+  <div class="mriz"><article class="t s3">
+  <div class="tm"><picture><source type="image/avif" sizes="(min-width:1568px) 420px, (min-width:1081px) 29vw, (min-width:761px) 46vw, 92vw" srcset="img/yoga-karlin-400.avif 400w, img/yoga-karlin-600.avif 600w, img/yoga-karlin-900.avif 900w, img/yoga-karlin-1300.avif 1300w"><source type="image/webp" sizes="(min-width:1568px) 420px, (min-width:1081px) 29vw, (min-width:761px) 46vw, 92vw" srcset="img/yoga-karlin-400.webp 400w, img/yoga-karlin-600.webp 600w, img/yoga-karlin-900.webp 900w, img/yoga-karlin-1300.webp 1300w"><img src="img/yoga-karlin-1300.jpg" sizes="(min-width:1568px) 420px, (min-width:1081px) 29vw, (min-width:761px) 46vw, 92vw" srcset="img/yoga-karlin-400.jpg 400w, img/yoga-karlin-600.jpg 600w, img/yoga-karlin-900.jpg 900w, img/yoga-karlin-1300.jpg 1300w" width="1300" height="2310" alt="" loading="lazy" decoding="async"></picture></div><div class="flood"></div>
+  <div class="th"><span class="lbl kick">Yoga</span></div>
+  <h3 class="blk">Yoga<br>Karlín</h3>
+  <p>Oblíbené studio, skvělí lektoři.</p>
+  <a class="cover" href="https://yogakarlin.cz" aria-label="Yoga Karlín" target="_blank" rel="noopener"></a>
+  <div class="soc unik"><a href="https://instagram.com/yoga_karlin" aria-label="Instagram" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg></a><a href="https://facebook.com/yogakarlin" aria-label="Facebook" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg></a></div>
+</article><div class="cislo"><b>3000+</b><span>účastníků kurzů meditace</span></div><article class="t s3">
+  <div class="tm"><picture><source type="image/avif" sizes="(min-width:1568px) 645px, (min-width:1081px) 45vw, (min-width:761px) 46vw, 92vw" srcset="img/kurz-meditace-400.avif 400w, img/kurz-meditace-600.avif 600w, img/kurz-meditace-900.avif 900w, img/kurz-meditace-1300.avif 1300w"><source type="image/webp" sizes="(min-width:1568px) 645px, (min-width:1081px) 45vw, (min-width:761px) 46vw, 92vw" srcset="img/kurz-meditace-400.webp 400w, img/kurz-meditace-600.webp 600w, img/kurz-meditace-900.webp 900w, img/kurz-meditace-1300.webp 1300w"><img src="img/kurz-meditace-1300.jpg" sizes="(min-width:1568px) 645px, (min-width:1081px) 45vw, (min-width:761px) 46vw, 92vw" srcset="img/kurz-meditace-400.jpg 400w, img/kurz-meditace-600.jpg 600w, img/kurz-meditace-900.jpg 900w, img/kurz-meditace-1300.jpg 1300w" width="1300" height="866" alt="" loading="lazy" decoding="async"></picture></div><div class="flood"></div>
+  <div class="th"><span class="lbl kick">Meditace</span></div>
+  <h3 class="blk">Kurz<br>meditace</h3>
+  <p>Naučte se meditovat se mnou v Praze</p>
+  <a class="cover" href="https://yogakarlin.cz/nabidka/kurz-meditace-mindfulness/" aria-label="Kurz meditace" target="_blank" rel="noopener"></a>
+  <div class="soc unik"><a href="https://instagram.com/vrdlovec" aria-label="Instagram" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg></a><a href="https://www.linkedin.com/in/vrdlovec/" aria-label="LinkedIn" target="_blank" rel="noopener"><svg><use href="#i-li"/></svg></a></div>
+</article><article class="t s4 tall">
+  <div class="tm"><picture><source type="image/avif" sizes="(min-width:1568px) 865px, (min-width:1081px) 61vw, (min-width:761px) 46vw, 92vw" srcset="img/nirvana-400.avif 400w, img/nirvana-600.avif 600w, img/nirvana-900.avif 900w, img/nirvana-1300.avif 1300w, img/nirvana-1800.avif 1800w"><source type="image/webp" sizes="(min-width:1568px) 865px, (min-width:1081px) 61vw, (min-width:761px) 46vw, 92vw" srcset="img/nirvana-400.webp 400w, img/nirvana-600.webp 600w, img/nirvana-900.webp 900w, img/nirvana-1300.webp 1300w, img/nirvana-1800.webp 1800w"><img src="img/nirvana-1800.jpg" sizes="(min-width:1568px) 865px, (min-width:1081px) 61vw, (min-width:761px) 46vw, 92vw" srcset="img/nirvana-400.jpg 400w, img/nirvana-600.jpg 600w, img/nirvana-900.jpg 900w, img/nirvana-1300.jpg 1300w, img/nirvana-1800.jpg 1800w" width="1800" height="1199" alt="" loading="lazy" decoding="async"></picture></div><div class="flood"></div>
+  <div class="th"><span class="lbl kick">Yoga / Meditace</span></div>
+  <h3 class="blk">Nirvána</h3>
+  <p>Podněty k životu s čistou myslí</p>
+  <a class="cover" href="https://vrdlovec.substack.com/" aria-label="Nirvána" target="_blank" rel="noopener"></a>
+  <div class="soc unik"><a href="https://facebook.com/vrdlovec" aria-label="Facebook" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg></a><a href="https://instagram.com/richardvrdlovec" aria-label="Instagram" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg></a></div>
+</article><div class="cislo"><b>15+</b><span>let učím meditaci</span></div><article class="t s2 tall">
+  <div class="tm"><picture><source type="image/avif" sizes="(min-width:1568px) 535px, (min-width:1081px) 37vw, (min-width:761px) 46vw, 92vw" srcset="img/kurz-online-400.avif 400w, img/kurz-online-600.avif 600w, img/kurz-online-900.avif 900w, img/kurz-online-1300.avif 1300w"><source type="image/webp" sizes="(min-width:1568px) 535px, (min-width:1081px) 37vw, (min-width:761px) 46vw, 92vw" srcset="img/kurz-online-400.webp 400w, img/kurz-online-600.webp 600w, img/kurz-online-900.webp 900w, img/kurz-online-1300.webp 1300w"><img src="img/kurz-online-1300.jpg" sizes="(min-width:1568px) 535px, (min-width:1081px) 37vw, (min-width:761px) 46vw, 92vw" srcset="img/kurz-online-400.jpg 400w, img/kurz-online-600.jpg 600w, img/kurz-online-900.jpg 900w, img/kurz-online-1300.jpg 1300w" width="1300" height="1300" alt="" loading="lazy" decoding="async"></picture></div><div class="flood"></div>
+  <div class="th"><span class="lbl kick">Meditace</span></div>
+  <h3 class="blk">Kurz<br>online</h3>
+  <p>Naučte se meditovat. Kdykoli, odkudkoli.</p>
+  <a class="cover" href="https://www.naucmese.cz/kurz/video-poradnej-kurz-meditace" aria-label="Kurz online" target="_blank" rel="noopener"></a>
+  <div class="soc"><a href="https://instagram.com/vrdlovec" aria-label="Instagram" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg></a><a href="https://www.linkedin.com/in/vrdlovec/" aria-label="LinkedIn" target="_blank" rel="noopener"><svg><use href="#i-li"/></svg></a></div>
+</article></div>
+
+  <footer id="kontakt">
+    <p class="fbig"><a href="mailto:vrdlovec@outlook.com">Napište mi</a></p>
+    <div class="fbot">
+      <span>„Život je výsledek všech vašich rozhodnutí." — Albert Camus</span>
+      <span class="stav lbl">Prototyp</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+const REF = 1325.74, START = new Date('2022-12-08'), SPOT = 2964.61, KDY = new Date('2026-09-05');
+(function () {
+  const roky = (KDY - START) / (365.25 * 864e5);
+  const pct = (x, d) => (x >= 0 ? '+' : '') + (x * 100).toFixed(d).replace('.', ',') + ' %';
+  document.getElementById('zhodnoceni').textContent = pct(SPOT / REF - 1, 0);
+  document.getElementById('pa').textContent = pct(Math.pow(SPOT / REF, 1 / roky) - 1, 0) + '\u00a0p.\u00a0a.';
+})();
+</script>
+</body>
+</html>
