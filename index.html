@@ -3,7 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vrdlovec</title>
+<title>VRDLOVEC</title>
+<meta name="description" content="Dvě svobody. Vnější a vnitřní.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vrdlovec">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:url" content="https://vrdlovec.cz/">
+<meta property="og:title" content="Peníze a mysl">
+<meta property="og:description" content="Dvě svobody. Vnější a vnitřní.">
+<meta property="og:image" content="https://vrdlovec.cz/img/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Peníze a mysl — Richard Vrdlovec">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'%3E%3Cpath d='M0 0H1000V1000H0Z' fill='%239355FF'/%3E%3Cpath d='M33.3 682.5V0L824.4 0Q863.6 30.5 885.7 74.6Q913.3 129.8 913.3 193.6Q913.3 267 880.9 323.8Q848.5 380.7 785.8 414.7L930.3 682.5H633.8L523.2 454H295.8V682.5ZM295.8 272.3H574.3Q604 272.3 624.2 253.7Q644.4 235.1 644.4 202.1Q644.4 179.8 634.8 164.4Q625.3 149 609.9 141Q594.5 133 574.3 133H295.8Z' fill='%230B0B0C'/%3E%3C/svg%3E">
 <style>
 @font-face {
@@ -59,7 +72,10 @@ a:focus-visible { outline:2px solid var(--azur); outline-offset:3px; }
 
 header { display:flex; align-items:center; justify-content:space-between; gap:24px;
   padding:22px var(--gut); position:relative; z-index:3; }
-.stamp { color:var(--ivory); font-size:clamp(17px,2.1vw,23px); }
+/* Logotyp je SVG z Nova identita, litery obtazene na obrysy - nezavisi
+   na nacteni fontu. fill=currentColor drzi puvodni chovani pri najeti. */
+.stamp { color:var(--ivory); display:block; width:clamp(110px,12vw,150px); }
+.stamp svg { display:block; width:100%; height:auto; fill:currentColor; }
 .stamp:hover { color:var(--viola); }
 nav { display:flex; gap:26px; }
 nav a { color:var(--ivory); } nav a:hover { color:var(--viola); }
@@ -300,7 +316,7 @@ footer { margin-top:clamp(52px,8vw,110px);
 <symbol id="i-bs" viewBox="0 0 24 24"><path d="M12 10.8C10.91 8.69 7.95 4.75 5.2 2.81 2.57.94 1.56 1.27.9 1.57.14 1.91 0 3.08 0 3.77c0 .69.38 5.65.62 6.48.82 2.74 3.71 3.66 6.38 3.36l.42-.06c-.14.02-.28.04-.42.06-3.91.58-7.39 2-2.83 7.08 5.01 5.19 6.87-1.11 7.83-4.31.95 3.2 2.05 9.27 7.73 4.31 4.27-4.31 1.17-6.5-2.74-7.08l-.42-.06.42.06c2.67.3 5.56-.62 6.38-3.36.24-.83.62-5.79.62-6.48 0-.69-.14-1.86-.9-2.2-.66-.3-1.67-.63-4.3 1.24C16.05 4.75 13.09 8.69 12 10.8Z"/></symbol>
 </defs></svg>
 <header>
-  <a class="stamp blk" href="#">Vrdlovec</a>
+  <a class="stamp" href="#" aria-label="Vrdlovec"><svg viewBox="0 0 7423 1124" aria-hidden="true" focusable="false"><g transform="translate(225.2,905.8) scale(1,-1)"><path d="M3913.6 -12.0Q4056.0 -12.0 4158.5 31.0Q4261.0 74.0 4317.0 153.5Q4373.0 233.0 4373.0 343.5Q4373.0 455.0 4317.0 535.0Q4261.0 615.0 4158.5 657.5Q4056.0 700.0 3913.6 700.0Q3773.5 700.0 3670.2 657.5Q3567.0 615.0 3511.0 535.0Q3455.0 455.0 3455.0 343.5Q3455.0 233.0 3511.0 153.5Q3567.0 74.0 3670.2 31.0Q3773.5 -12.0 3913.6 -12.0ZM1885.0 0.0H2285.0Q2413.0 0.0 2506.0 40.0Q2599.0 80.0 2649.0 157.0Q2699.0 234.0 2699.0 344.0Q2699.0 454.0 2649.0 531.0Q2599.0 608.0 2506.0 648.0Q2413.0 688.0 2285.0 688.0H1885.0ZM977.0 0.0H1224.0V215.0H1438.0L1542.0 0.0H1821.0L1685.0 252.0Q1744.0 284.0 1774.5 337.5Q1805.0 391.0 1805.0 460.0Q1805.0 520.0 1779.0 572.0Q1753.0 624.0 1701.5 656.0Q1650.0 688.0 1573.0 688.0H977.0ZM5320.0 0.0H6063.0V171.0H5568.0V266.0H5988.0V428.0H5568.0V517.0H6055.0V688.0H5320.0ZM6558.0 -12.0Q6686.0 -12.0 6777.0 25.5Q6868.0 63.0 6916.5 129.0Q6965.0 195.0 6965.0 279.0H6732.0Q6732.0 243.0 6710.5 216.0Q6689.0 189.0 6648.5 174.0Q6608.0 159.0 6551.0 159.0Q6489.0 159.0 6449.0 183.0Q6409.0 207.0 6389.5 246.5Q6370.0 286.0 6370.0 332.0V357.0Q6370.0 405.0 6389.5 444.0Q6409.0 483.0 6450.5 506.0Q6492.0 529.0 6556.0 529.0Q6607.0 529.0 6645.0 513.0Q6683.0 497.0 6704.0 469.0Q6725.0 441.0 6725.0 405.0H6965.0Q6965.0 492.0 6913.5 558.5Q6862.0 625.0 6771.0 662.5Q6680.0 700.0 6560.0 700.0Q6342.0 700.0 6229.0 607.5Q6116.0 515.0 6116.0 344.0Q6116.0 227.0 6164.5 148.0Q6213.0 69.0 6311.0 28.5Q6409.0 -12.0 6558.0 -12.0ZM343.0 0.0H595.0L930.0 688.0H667.0L539.0 399.0Q530.0 379.0 518.5 350.0Q507.0 321.0 496.0 291.0Q485.0 261.0 477.0 238.0H470.0Q461.0 264.0 449.0 295.5Q437.0 327.0 426.0 355.5Q415.0 384.0 408.0 399.0L282.0 688.0H8.0ZM4686.0 0.0H4938.0L5273.0 688.0H5010.0L4882.0 399.0Q4873.0 379.0 4861.5 350.0Q4850.0 321.0 4839.0 291.0Q4828.0 261.0 4820.0 238.0H4813.0Q4804.0 264.0 4792.0 295.5Q4780.0 327.0 4769.0 355.5Q4758.0 384.0 4751.0 399.0L4625.0 688.0H4351.0ZM2783.0 0.0H3476.0V189.0H3030.0V688.0H2783.0ZM3914.0 159.0Q3867.0 159.0 3829.0 171.5Q3791.0 184.0 3764.0 207.5Q3737.0 231.0 3723.0 263.1Q3709.0 295.2 3709.0 333.0V357.0Q3709.0 394.6 3723.0 426.3Q3737.0 458.0 3764.0 481.0Q3791.0 504.0 3829.0 516.5Q3867.0 529.0 3914.0 529.0Q3961.0 529.0 3999.0 516.5Q4037.0 504.0 4064.0 481.0Q4091.0 458.0 4105.0 426.3Q4119.0 394.6 4119.0 357.0V333.0Q4119.0 295.2 4105.0 263.1Q4091.0 231.0 4064.0 207.5Q4037.0 184.0 3999.0 171.5Q3961.0 159.0 3914.0 159.0ZM2132.0 171.0V517.0H2270.0Q2311.0 517.0 2343.0 505.5Q2375.0 494.0 2398.0 472.5Q2421.0 451.0 2433.0 422.0Q2445.0 393.0 2445.0 357.0V333.0Q2445.0 297.0 2433.0 267.5Q2421.0 238.0 2398.0 216.5Q2375.0 195.0 2343.0 183.0Q2311.0 171.0 2270.0 171.0ZM1224.0 386.0V517.0H1486.0Q1505.0 517.0 1519.5 509.5Q1534.0 502.0 1543.0 487.5Q1552.0 473.0 1552.0 452.0Q1552.0 421.0 1533.0 403.5Q1514.0 386.0 1486.0 386.0Z" fill="currentColor"/></g></svg></a>
   <nav class="lbl">
     <a href="#vnejsi">Vnější</a><a href="#vnitrni">Vnitřní</a><a href="#kontakt">Kontakt</a>
   </nav>
@@ -407,6 +423,41 @@ const REF = 1325.74, START = new Date('2022-12-08'), SPOT = 2964.61, KDY = new D
   document.getElementById('zhodnoceni').textContent = pct(SPOT / REF - 1, 0);
   document.getElementById('pa').textContent = pct(Math.pow(SPOT / REF, 1 / roky) - 1, 0) + '\u00a0p.\u00a0a.';
 })();
+</script>
+
+<script>
+/* GoatCounter — mereni navstevnosti BEZ COOKIES, tedy bez souhlasne listy.
+   Sem patri kod webu, ktery vznikne pri zalozeni uctu na goatcounter.com:
+   pro https://vrdlovec.goatcounter.com/ je kod 'vrdlovec'.
+   Dokud zustane prazdny, nenacte se nic a neodejde zadny pozadavek. */
+const GC_KOD = 'vrdlovec';
+
+if (GC_KOD) {
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = '//gc.zgo.at/count.js';
+  s.dataset.goatcounter = 'https://' + GC_KOD + '.goatcounter.com/count';
+  document.head.appendChild(s);
+
+  /* Na rozcestniku je podstatne, NA CO lidi kliknou, ne kolik jich prislo.
+     Vsechny odkazy maji target="_blank", takze se stranka neopousti
+     a mereni stihne odejit. */
+  document.addEventListener('click', function (e) {
+    const a = e.target.closest('a.cover, .soc a, .fbig a');
+    if (!a || !window.goatcounter || !goatcounter.count) return;
+    const jmeno = (el) => {
+      const h = el.closest('article.t');
+      // innerText, ne textContent: nadpisy maji uvnitr <br> a textContent
+      // by z 'Kurz online' udelal 'Kurzonline'
+      return h ? h.querySelector('h3').innerText.replace(/\s+/g, ' ').trim() : '?';
+    };
+    let cesta;
+    if (a.matches('a.cover'))      cesta = 'dlazdice/' + jmeno(a);
+    else if (a.matches('.fbig a')) cesta = 'napiste-mi';
+    else                           cesta = 'sit/' + a.hostname.replace(/^www\./, '') + ' — ' + jmeno(a);
+    goatcounter.count({ path: cesta, title: a.href, event: true });
+  });
+}
 </script>
 </body>
 </html>
