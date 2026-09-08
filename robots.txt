@@ -1,0 +1,26 @@
+# vrdlovec.cz — rozcestník. Ať se najde, o to tu jde.
+
+User-agent: *
+Allow: /
+Disallow: /produkce.py
+Disallow: /sestav.py
+
+# Roboti jazykových modelů mají přístup záměrně: web je rozcestník
+# a jeho úkolem je, aby se o těch projektech vědělo. Kdyby se to mělo
+# obrátit, stačí Allow přepsat na Disallow u konkrétního robota.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: Bytespider
+User-agent: meta-externalagent
+Allow: /
+
+Sitemap: https://vrdlovec.cz/sitemap.xml
