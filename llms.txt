@@ -9,7 +9,7 @@ Dvě svobody. Vnější a vnitřní.
 ## Peníze — zlato a investice
 
 - [Golda](https://golda.io): investiční zlato, „lepší spořicí účet". Od založení +124 %, tj. +24 % p. a.
-- [Zpravodaj Goldy](https://goldaio.substack.com/): co dělá zlato a proč. 1250+ odběratelů.
+- [Zpravodaj Goldy](https://zpravy.golda.io/): co dělá zlato a proč. 1250+ odběratelů.
 - [Zajišťovací fond](https://zajistovacifond.cz): nemůžete předvídat, můžete se připravit.
 - [Zajišťovací fond fondů](https://zajistovaci.cz): nevybírá pozice, vybírá správce.
 
