@@ -463,36 +463,54 @@ const REF = 1325.74, START = new Date('2022-12-08'), SPOT = 2964.61, KDY = new D
 </script>
 
 <script>
-/* GoatCounter — mereni navstevnosti BEZ COOKIES, tedy bez souhlasne listy.
-   Sem patri kod webu, ktery vznikne pri zalozeni uctu na goatcounter.com:
-   pro https://vrdlovec.goatcounter.com/ je kod 'vrdlovec'.
-   Dokud zustane prazdny, nenacte se nic a neodejde zadny pozadavek. */
-const GC_KOD = 'vrdlovec';
+/* Google Analytics 4. Prázdná hodnota znamená, že se nevloží nic a neodejde
+   žádný požadavek — měření se vypíná jedním smazáním.
 
-if (GC_KOD) {
+   Do 9. 9. 2026 tu byl GoatCounter, který měřil bez cookies, a proto tenhle
+   web nepotřeboval souhlasnou lištu. Vyměněno za GA4 na rozhodnutí majitele,
+   aby bylo měření všech jeho webů pohromadě. GA4 cookies sází; lišta tady
+   není a je to vědomé rozhodnutí, ne opomenutí. */
+const GA_ID = 'G-TZBQ1L9FGY';
+
+if (GA_ID) {
   const s = document.createElement('script');
   s.async = true;
-  s.src = '//gc.zgo.at/count.js';
-  s.dataset.goatcounter = 'https://' + GC_KOD + '.goatcounter.com/count';
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
   document.head.appendChild(s);
 
-  /* Na rozcestniku je podstatne, NA CO lidi kliknou, ne kolik jich prislo.
-     Vsechny odkazy maji target="_blank", takze se stranka neopousti
-     a mereni stihne odejit. */
+  /* Přes window, ne `function gtag()`. Deklarace funkce uvnitř bloku se
+     v různých režimech chová různě a tenhle skript není modul. */
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { dataLayer.push(arguments); };
+  gtag('js', new Date());
+  gtag('config', GA_ID);
+
+  /* Na rozcestníku je podstatné, NA CO lidé kliknou, ne kolik jich přišlo.
+     Všechny odkazy mají target="_blank", takže se stránka neopouští
+     a měření stihne odejít.
+
+     GA4 odchozí kliknutí měří i samo, přes vylepšené měření. Neřekne ale,
+     ze KTERÉ dlaždice se kliklo, a to je tady ta zajímavá informace —
+     proto vlastní událost. */
   document.addEventListener('click', function (e) {
     const a = e.target.closest('a.cover, .soc a, .fbig a');
-    if (!a || !window.goatcounter || !goatcounter.count) return;
+    if (!a || typeof gtag !== 'function') return;
     const jmeno = (el) => {
       const h = el.closest('article.t');
-      // innerText, ne textContent: nadpisy maji uvnitr <br> a textContent
-      // by z 'Kurz online' udelal 'Kurzonline'
+      /* innerText, ne textContent: nadpisy mají uvnitř <br> a textContent
+         by z „Kurz online“ udělal „Kurzonline“. */
       return h ? h.querySelector('h3').innerText.replace(/\s+/g, ' ').trim() : '?';
     };
-    let cesta;
-    if (a.matches('a.cover'))      cesta = 'dlazdice/' + jmeno(a);
-    else if (a.matches('.fbig a')) cesta = 'napiste-mi';
-    else                           cesta = 'sit/' + a.hostname.replace(/^www\./, '') + ' — ' + jmeno(a);
-    goatcounter.count({ path: cesta, title: a.href, event: true });
+    let kanal;
+    if (a.matches('a.cover'))      kanal = 'dlazdice';
+    else if (a.matches('.fbig a')) kanal = 'napiste_mi';
+    else                           kanal = 'sit';
+    gtag('event', 'proklik', {
+      kanal: kanal,
+      dlazdice: kanal === 'napiste_mi' ? '—' : jmeno(a),
+      sit: kanal === 'sit' ? a.hostname.replace(/^www\./, '') : '—',
+      cil: a.href
+    });
   });
 }
 </script>
