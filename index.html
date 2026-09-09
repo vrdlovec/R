@@ -178,10 +178,42 @@ h1 .l2 { display:block; } h1 em { font-style:normal; color:var(--viola); }
    Viola na Noci ma kontrast 2,42, tedy pod minimem 3,0 pro graficke prvky,
    Svetlo ma 4,19 a je to podle palety odstin fialove pro tmavy podklad. */
 .soc.unik a { color:var(--svetlo); opacity:.85; }
-/* Pri najeti se fialove ikony vraci do sede, ve ktere byly puvodne - fialovou
-   uz nese cela dlazdice a druha fialova by se s ni bila. */
-.t:hover .soc.unik a, .t:focus-within .soc.unik a { color:var(--mlha); opacity:.5; }
-.soc a:hover, .t:hover .soc.unik a:hover { opacity:1; color:var(--ivory); }
+/* Po najeti na dlazdici se ikony rozsviti do Ivory, jedna po druhe: tri
+   sekundy na kazdou, start posunuty o sekundu, tedy prvni 0-3 s, druha
+   1-4 s, treti 2-5 s. Ivory je zamerne tataz bila, na kterou v tu chvili
+   prechazi popisek vlevo nahore (.t:hover .kick) - dlazdice tak zesvetla
+   jako celek.
+
+   Driv se fialove ikony pri najeti naopak vracely do sede, protoze
+   fialovou uz nese cela dlazdice a druha fialova by se s ni bila. Bila
+   resi tentyz spor jinak, takze se to pravidlo obratilo.
+
+   Cil MUSI byt opacity 1. Sest dlazdic z osmi ma .soc.unik s klidovou
+   .85, takze mensi cil (zkouseno .8) pruhlednost snizoval a nebylo co
+   animovat - zmena se pak zdala, ze se vubec nedeje.
+
+   Dve pravidla niz plati pro ikonu pod kurzorem a musi stat AZ ZA temi
+   vys a mit dva :hover. Bez toho by je trisekundove trvani prebilo,
+   a najeti na ikonu ma odpovidat puvodnich .2 s. Sousedi pritom ustoupi
+   na .45 - kdyz jdou pri najeti na dlazdici vsechny na plnou, jinak by
+   nebylo poznat, na ktere ikone clovek stoji.
+
+   prefers-reduced-motion na konci souboru vypina prechody globalne,
+   takze tam se stavy prepnou skokem. Tak to ma byt. */
+.t:hover .soc a, .t:focus-within .soc a,
+.t:hover .soc.unik a, .t:focus-within .soc.unik a {
+  color:var(--ivory); opacity:1;
+  transition-duration:3s; transition-timing-function:ease; }
+.t:hover .soc a:nth-child(2), .t:focus-within .soc a:nth-child(2),
+.t:hover .soc.unik a:nth-child(2), .t:focus-within .soc.unik a:nth-child(2) { transition-delay:1s; }
+.t:hover .soc a:nth-child(3), .t:focus-within .soc a:nth-child(3),
+.t:hover .soc.unik a:nth-child(3), .t:focus-within .soc.unik a:nth-child(3) { transition-delay:2s; }
+.t:hover .soc:hover a, .t:hover .soc.unik:hover a,
+.t:focus-within .soc:hover a, .t:focus-within .soc.unik:hover a {
+  opacity:.45; transition-duration:.2s; transition-delay:0s; transition-timing-function:ease; }
+.t:hover .soc a:hover, .t:hover .soc.unik a:hover,
+.t:focus-within .soc a:hover, .t:focus-within .soc.unik a:hover {
+  opacity:1; transition-duration:.2s; transition-delay:0s; transition-timing-function:ease; }
 .soc svg { width:17px; height:17px; display:block; fill:currentColor; }
 
 .break { position:relative; margin-top:clamp(52px,8vw,110px); min-height:clamp(320px,44vw,620px);
