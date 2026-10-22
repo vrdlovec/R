@@ -257,25 +257,26 @@ footer { margin-top:clamp(52px,8vw,110px);
   font-size:clamp(26px,3.6vw,52px); line-height:.9; letter-spacing:-.03em; margin:0; }
 .fbig a { color:var(--viola); }
 .fbig a:hover { color:var(--ivory); }
-/* Hvezdy vedle Napiste mi. Chovaji se jako hodnotici ovladac: pri najeti se
-   rozsviti vsechny od prvni po tu pod kurzorem. Dela to `row-reverse` plus
-   `:hover ~ span` - v DOM jdou hvezdy pozpatku, takze "nasledujici
-   sourozenci" jsou vizualne ty vlevo od kurzoru. Zadny JavaScript.
+/* Hvezda vedle Napiste mi vede na hvezda.vrdlovec.cz. Je jedna, obrysova,
+   a pri najeti se vyplni. Stoji tam, kde byla pata z puvodnich peti hvezd
+   (odsazeni 3,87 em od konce textu), takze mezi textem a hvezdou zustava
+   vzduch po ctyrech hvezdach, ktere zmizely.
 
-   Odezva je zamerne svizna (.12 s). Ikony na dlazdicich se rozsvecuji pomalu,
-   protoze maji lakat; tohle je ovladac, a ovladac, ktery se rozjizdi pomalu,
-   pusobi rozbite.
-
-   Barvy: prazdna hvezda je Stin, rozsvicena Viola. Zlata by byla zvykova,
-   ale v palete tohohle webu neni a prihodit ji sem by znamenalo pridat
-   barvu kvuli peti znakum. */
-.hvezdy { display:inline-flex; flex-direction:row-reverse; gap:.06em;
-  margin-left:.42em; }
-.hvezdy span { color:var(--stin); transition:color .12s ease, transform .12s ease; }
-.hvezdy span:hover, .hvezdy span:hover ~ span { color:var(--viola); }
-.hvezdy span:hover { transform:scale(1.12); }
-/* .fbig a:hover vys by hvezdam prepsalo barvu, kdyby ji dedily. */
-.fbig a.hvezdy:hover { color:inherit; }
+   Je to SVG, ne znak: Archivo hvezdu nema, znak by se vzal z nahradniho
+   pisma a obrys i velikost by se lisily podle systemu. */
+.hvezda { display:inline-block; margin-left:3.87em; width:.8em; height:.8em;
+  vertical-align:-.04em; color:var(--ivory);
+  transition:color .15s ease; }
+.hvezda svg { display:block; width:100%; height:100%; fill:transparent;
+  stroke:currentColor; stroke-width:1.6; stroke-linejoin:round;
+  transition:fill .15s ease; }
+/* Obrys je bily, pri najeti se hvezda vyplni Violou - stejne jako text
+   Napiste mi, jen obracene: ten je fialovy a pri najeti zbeli. */
+.hvezda:hover svg, .hvezda:focus-visible svg { fill:currentColor; }
+/* Barvy musi mit selektor .fbig a.hvezda - jinak je prebije .fbig a
+   a .fbig a:hover vys, ktere patri textu Napiste mi. */
+.fbig a.hvezda { color:var(--ivory); }
+.fbig a.hvezda:hover, .fbig a.hvezda:focus-visible { color:var(--viola); }
 .fbot { display:flex; flex-wrap:wrap; gap:14px 30px; align-items:baseline;
   margin-top:clamp(30px,4vw,52px);
   color:var(--sede); font-size:12.5px; }
@@ -517,7 +518,7 @@ footer { margin-top:clamp(52px,8vw,110px);
 </article></div>
 
   <footer id="kontakt">
-    <p class="fbig"><a href="mailto:richard@vrdlovec.cz">Napište mi</a><a class="hvezdy" href="https://hvezda.vrdlovec.cz/" aria-label="Dejte mi hvězdičku"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></a></p>
+    <p class="fbig"><a href="mailto:richard@vrdlovec.cz">Napište mi</a><a class="hvezda" href="https://hvezda.vrdlovec.cz/" aria-label="Dejte mi hvězdičku"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.6l2.9 6.2 6.8.8-5 4.7 1.3 6.7L12 17.6 6 21l1.3-6.7-5-4.7 6.8-.8z"/></svg></a></p>
     <div class="fbot">
       <span>„Život je výsledek všech vašich rozhodnutí." — Albert Camus</span>
     </div>
@@ -577,7 +578,7 @@ if (GA_ID) {
     };
     let kanal;
     if (a.matches('a.cover'))       kanal = 'dlazdice';
-    else if (a.matches('a.hvezdy')) kanal = 'hvezdy';
+    else if (a.matches('a.hvezda')) kanal = 'hvezdy';
     else if (a.matches('.fbig a'))  kanal = 'napiste_mi';
     else                            kanal = 'sit';
     gtag('event', 'proklik', {
