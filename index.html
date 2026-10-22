@@ -257,6 +257,25 @@ footer { margin-top:clamp(52px,8vw,110px);
   font-size:clamp(26px,3.6vw,52px); line-height:.9; letter-spacing:-.03em; margin:0; }
 .fbig a { color:var(--viola); }
 .fbig a:hover { color:var(--ivory); }
+/* Hvezdy vedle Napiste mi. Chovaji se jako hodnotici ovladac: pri najeti se
+   rozsviti vsechny od prvni po tu pod kurzorem. Dela to `row-reverse` plus
+   `:hover ~ span` - v DOM jdou hvezdy pozpatku, takze "nasledujici
+   sourozenci" jsou vizualne ty vlevo od kurzoru. Zadny JavaScript.
+
+   Odezva je zamerne svizna (.12 s). Ikony na dlazdicich se rozsvecuji pomalu,
+   protoze maji lakat; tohle je ovladac, a ovladac, ktery se rozjizdi pomalu,
+   pusobi rozbite.
+
+   Barvy: prazdna hvezda je Stin, rozsvicena Viola. Zlata by byla zvykova,
+   ale v palete tohohle webu neni a prihodit ji sem by znamenalo pridat
+   barvu kvuli peti znakum. */
+.hvezdy { display:inline-flex; flex-direction:row-reverse; gap:.06em;
+  margin-left:.42em; }
+.hvezdy span { color:var(--stin); transition:color .12s ease, transform .12s ease; }
+.hvezdy span:hover, .hvezdy span:hover ~ span { color:var(--viola); }
+.hvezdy span:hover { transform:scale(1.12); }
+/* .fbig a:hover vys by hvezdam prepsalo barvu, kdyby ji dedily. */
+.fbig a.hvezdy:hover { color:inherit; }
 .fbot { display:flex; flex-wrap:wrap; gap:14px 30px; align-items:baseline;
   margin-top:clamp(30px,4vw,52px);
   color:var(--sede); font-size:12.5px; }
@@ -498,7 +517,7 @@ footer { margin-top:clamp(52px,8vw,110px);
 </article></div>
 
   <footer id="kontakt">
-    <p class="fbig"><a href="mailto:richard@vrdlovec.cz">Napište mi</a></p>
+    <p class="fbig"><a href="mailto:richard@vrdlovec.cz">Napište mi</a><a class="hvezdy" href="https://hvezda.vrdlovec.cz/" aria-label="Dejte mi hvězdičku"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></a></p>
     <div class="fbot">
       <span>„Život je výsledek všech vašich rozhodnutí." — Albert Camus</span>
     </div>
@@ -557,12 +576,13 @@ if (GA_ID) {
       return h ? h.querySelector('h3').innerText.replace(/\s+/g, ' ').trim() : '?';
     };
     let kanal;
-    if (a.matches('a.cover'))      kanal = 'dlazdice';
-    else if (a.matches('.fbig a')) kanal = 'napiste_mi';
-    else                           kanal = 'sit';
+    if (a.matches('a.cover'))       kanal = 'dlazdice';
+    else if (a.matches('a.hvezdy')) kanal = 'hvezdy';
+    else if (a.matches('.fbig a'))  kanal = 'napiste_mi';
+    else                            kanal = 'sit';
     gtag('event', 'proklik', {
       kanal: kanal,
-      dlazdice: kanal === 'napiste_mi' ? '—' : jmeno(a),
+      dlazdice: (kanal === 'napiste_mi' || kanal === 'hvezdy') ? '—' : jmeno(a),
       sit: kanal === 'sit' ? a.hostname.replace(/^www\./, '') : '—',
       cil: a.href
     });
